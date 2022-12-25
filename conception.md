@@ -1,28 +1,43 @@
+# Conception
+
+Below is a simple conception schematic for the class project.
+
 ```mermaid
 classDiagram
-  class ProviderProject {
+  class Provider{
     <<Abstract>>
+    +name String
+    +api ProviderApi
+    +groups ~List~ProviderGroup
+    +props Any
+    +getGroups()
   }
-  class GitlabProject {
+
+  class ProviderApi{
+    <<Abstract>>
+    +url String
+    +baseUrl String
+    +token String
   }
 
   class ProviderGroup{
     <<Abstract>>
-  }
-  class GitlabGroup{
+    +name String
+    +groups ProviderGroup
+    +projects ~List~ProviderProject
+    +props Any
+    +getGroups()
+    +getProjects()
   }
 
-  class Provider{
+  class ProviderProject {
     <<Abstract>>
-  }
-  class Gitlab{
-    groups: List~GitlabGroup~
+    +name string
+    +props Any
   }
 
-  Gitlab --|> Provider
-  GitlabGroup --|> ProviderGroup
-  GitlabProject --|> ProviderProject
-  Provider o.. ProviderGroup
-  ProviderGroup o.. ProviderProject
-
+  ProviderGroup "1" ..o "*" Provider
+  ProviderApi "1" ..o "1" Provider
+  ProviderGroup "1" ..o "*" ProviderGroup
+  ProviderProject "1" ..o "*" ProviderGroup
 ```
