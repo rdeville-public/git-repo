@@ -25,13 +25,14 @@
     "lint:ci": "yarn lint:js --quiet ./ && yarn lint:spelling",
     "lint:js": "eslint --cache --report-unused-disable-directives",
     "lint:spelling": "cspell \"**\" --no-progress",
-    "test": "c8 --check-coverage --lines 95 --functions 95 --branches 95 --statements 95 --per-file ava"
+    "test": "c8 --check-coverage --lines 95 --functions 95 --branches 95 --statements 95 --per-file --all --src ./build ava"
   },
   "devDependencies": {
     "@ava/typescript": "^3.0.1",
     "@semantic-release/changelog": "^6.0.2",
     "@semantic-release/git": "^10.0.1",
     "@types/node": "^14",
+    "@types/yamljs": "^0.2.31",
     "@typescript-eslint/eslint-plugin": "^5.44.0",
     "@typescript-eslint/parser": "^5.44.0",
     "ava": "^5.1.0",
@@ -43,7 +44,8 @@
     "semantic-release": "^19.0.5",
     "semantic-release-gitmoji": "^1.5.0",
     "ts-node": "^10.9.1",
-    "typescript": "^4.9.3"
+    "typescript": "^4.9.3",
+    "yamljs": "^0.3.0"
   },
   "dependencies": {
     "@gitbeaker/node": "^35.8.0",
